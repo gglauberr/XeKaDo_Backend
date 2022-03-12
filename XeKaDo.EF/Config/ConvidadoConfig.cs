@@ -9,11 +9,11 @@ using XeKaDo.Domain.Models;
 
 namespace XeKaDo.EF.Config
 {
-    public class CategoriaEventoConfig : IEntityTypeConfiguration<CategoriaEvento>
+    public class ConvidadoConfig : IEntityTypeConfiguration<Convidado>
     {
-        public void Configure(EntityTypeBuilder<CategoriaEvento> builder)
+        public void Configure(EntityTypeBuilder<Convidado> builder)
         {
-            builder.ToTable(nameof(CategoriaEvento));
+            builder.ToTable(nameof(Convidado));
 
             builder.HasKey((c) => c.Id);
 
@@ -23,12 +23,26 @@ namespace XeKaDo.EF.Config
                 .ValueGeneratedOnAdd();
 
             builder
-                .Property((c) => c.UsuarioId)
+                .Property((c) => c.Nome)
+                .HasMaxLength(200)
                 .IsRequired();
 
             builder
-                .Property((c) => c.Descricao)
-                .HasMaxLength(200)
+                .Property((c) => c.Celular)
+                .HasMaxLength(11)
+                .IsRequired();
+
+            builder
+                .Property((c) => c.StatusConfirmacao)
+                .IsRequired();
+
+            builder
+                .Property((c) => c.Observacao)
+                .HasMaxLength(1000);
+
+            builder
+                .Property((c) => c.Hash)
+                .HasMaxLength(512)
                 .IsRequired();
 
             builder
@@ -40,6 +54,11 @@ namespace XeKaDo.EF.Config
                 .Property((c) => c.Ativo)
                 .HasDefaultValue(true)
                 .ValueGeneratedOnAdd();
+
+            builder
+                .HasOne((c) => c.Ambiente)
+                .WithMany((a) => a.Convidados)
+                .HasForeignKey((c) => c.AmbienteId);
         }
     }
 }

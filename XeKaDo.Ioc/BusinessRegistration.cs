@@ -15,6 +15,7 @@ namespace XeKaDo.Ioc
         public static IServiceCollection BusinessRegister(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddTransient<IAuthenticationService, AuthenticationService>();
+            services.AddTransient<ICategoriaEventoService, CategoriaEventoService>();
 
             return services;
         }

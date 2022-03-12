@@ -8,7 +8,15 @@ namespace XeKaDo.Domain.Models
 {
     public class Evento
     {
+        public Evento()
+        {
+            Ambientes = new HashSet<Ambiente>();
+        }
+
         public Guid Id { get; set; }
+        public Guid UsuarioId { get; set; }
+        public Guid ContratanteId { get; set; }
+        public Guid CategoriaEventoId { get; set; }
         public string Descricao { get; set; }
         public string Logradouro { get; set; }
         public string Numero { get; set; }
@@ -22,5 +30,8 @@ namespace XeKaDo.Domain.Models
         public DateTime DataLimiteConfirmacao { get; set; }
         public DateTime DataCriacao { get; set; }
         public bool Ativo { get; set; }
+        public virtual Contratante Contratante { get; set; }
+        public virtual CategoriaEvento CategoriaEvento { get; set; }
+        public virtual ICollection<Ambiente> Ambientes { get; set; }
     }
 }

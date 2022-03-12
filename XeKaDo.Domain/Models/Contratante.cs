@@ -8,7 +8,13 @@ namespace XeKaDo.Domain.Models
 {
     public class Contratante
     {
+        public Contratante()
+        {
+            Eventos = new HashSet<Evento>();
+        }
+
         public Guid Id { get; set; }
+        public Guid UsuarioId { get; set; }
         public string Nome { get; set; }
         public string Cpf { get; set; }
         public string Celular { get; set; }
@@ -22,5 +28,6 @@ namespace XeKaDo.Domain.Models
         public string Uf { get; set; }
         public DateTime DataCriacao { get; set; }
         public bool Ativo { get; set; }
+        public virtual ICollection<Evento> Eventos { get; set; }
     }
 }

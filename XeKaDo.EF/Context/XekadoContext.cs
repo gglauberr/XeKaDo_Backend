@@ -16,6 +16,8 @@ namespace XeKaDo.EF.Context
         public virtual DbSet<Contratante> Contratante { get; set; }
         public virtual DbSet<CategoriaEvento> CategoriaEvento { get; set; }
         public virtual DbSet<Evento> Evento { get; set; }
+        public virtual DbSet<Ambiente> Ambiente { get; set; }
+        public virtual DbSet<Convidado> Convidado { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

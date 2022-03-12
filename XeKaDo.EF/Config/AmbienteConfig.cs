@@ -9,37 +9,38 @@ using XeKaDo.Domain.Models;
 
 namespace XeKaDo.EF.Config
 {
-    public class CategoriaEventoConfig : IEntityTypeConfiguration<CategoriaEvento>
+    public class AmbienteConfig : IEntityTypeConfiguration<Ambiente>
     {
-        public void Configure(EntityTypeBuilder<CategoriaEvento> builder)
+        public void Configure(EntityTypeBuilder<Ambiente> builder)
         {
-            builder.ToTable(nameof(CategoriaEvento));
+            builder.ToTable(nameof(Ambiente));
 
-            builder.HasKey((c) => c.Id);
+            builder.HasKey((a) => a.Id);
 
             builder
-                .Property((c) => c.Id)
+                .Property((a) => a.Id)
                 .HasDefaultValueSql("NEWSEQUENTIALID()")
                 .ValueGeneratedOnAdd();
 
             builder
-                .Property((c) => c.UsuarioId)
-                .IsRequired();
-
-            builder
-                .Property((c) => c.Descricao)
+                .Property((a) => a.Descricao)
                 .HasMaxLength(200)
                 .IsRequired();
 
             builder
-                .Property((c) => c.DataCriacao)
+                .Property((a) => a.DataCriacao)
                 .HasDefaultValueSql("GETDATE()")
                 .ValueGeneratedOnAdd();
 
             builder
-                .Property((c) => c.Ativo)
+                .Property((a) => a.Ativo)
                 .HasDefaultValue(true)
                 .ValueGeneratedOnAdd();
+
+            builder
+                .HasOne((a) => a.Evento)
+                .WithMany((e) => e.Ambientes)
+                .HasForeignKey((a) => a.EventoID);
         }
     }
 }

@@ -4,20 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XeKaDo.Domain.Models
+namespace XeKaDo.Domain.DTO
 {
-    public class CategoriaEvento
+    public class CategoriaEventoDTO
     {
-        public CategoriaEvento()
-        {
-            Eventos = new HashSet<Evento>();
-        }
-
         public Guid Id { get; set; }
         public Guid UsuarioId { get; set; }
         public string Descricao { get; set; }
         public DateTime DataCriacao { get; set; }
         public bool Ativo { get; set; }
-        public virtual ICollection<Evento> Eventos { get; set; }
     }
 }

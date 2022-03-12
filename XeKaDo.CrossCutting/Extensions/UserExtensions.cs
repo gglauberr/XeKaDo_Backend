@@ -21,10 +21,11 @@ namespace XeKaDo.CrossCutting.Extensions
             };
         }
 
-        public static string GetId(this ClaimsPrincipal user)
+        public static Guid GetId(this ClaimsPrincipal user)
         {
-            if (!user.Identity.IsAuthenticated) { return string.Empty; }
-            return user.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? string.Empty;
+            if (!user.Identity.IsAuthenticated) { return Guid.Empty; }
+            var converteuId = Guid.TryParse(user.FindFirst(ClaimTypes.NameIdentifier)?.Value, out var idGuid);
+            return converteuId ? idGuid : Guid.Empty;
         }
 
         public static string GetName(this ClaimsPrincipal user)

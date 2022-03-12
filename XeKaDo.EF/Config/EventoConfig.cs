@@ -19,8 +19,12 @@ namespace XeKaDo.EF.Config
 
             builder
                 .Property((e) => e.Id)
-                .HasDefaultValueSql("NEWSEQUENTIALID")
+                .HasDefaultValueSql("NEWSEQUENTIALID()")
                 .ValueGeneratedOnAdd();
+
+            builder
+                .Property((e) => e.UsuarioId)
+                .IsRequired();
 
             builder
                 .Property((e) => e.Descricao)
@@ -81,6 +85,16 @@ namespace XeKaDo.EF.Config
                 .Property((e) => e.Ativo)
                 .HasDefaultValue(true)
                 .ValueGeneratedOnAdd();
+
+            builder
+                .HasOne((e) => e.Contratante)
+                .WithMany((c) => c.Eventos)
+                .HasForeignKey((e) => e.ContratanteId);
+
+            builder
+                .HasOne((e) => e.CategoriaEvento)
+                .WithMany((c) => c.Eventos)
+                .HasForeignKey((e) => e.CategoriaEventoId);
         }
     }
 }

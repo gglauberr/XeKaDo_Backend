@@ -19,8 +19,12 @@ namespace XeKaDo.EF.Config
 
             builder
                 .Property((c) => c.Id)
-                .HasDefaultValueSql("NEWSEQUENTIALID")
+                .HasDefaultValueSql("NEWSEQUENTIALID()")
                 .ValueGeneratedOnAdd();
+
+            builder
+                .Property((c) => c.UsuarioId)
+                .IsRequired();
 
             builder
                 .Property((c) => c.Nome)
