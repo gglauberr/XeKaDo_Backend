@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.28" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.28" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XeKaDo.DataAccess\XeKaDo.DataAccess.csproj" />
+  </ItemGroup>
+
+</Project>
