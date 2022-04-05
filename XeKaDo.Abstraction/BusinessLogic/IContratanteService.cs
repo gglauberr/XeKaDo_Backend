@@ -18,6 +18,6 @@ namespace XeKaDo.Abstraction.BusinessLogic
 
         Task<ContratanteDTO> BuscarContratante(ClaimsPrincipal user, Guid contratanteId);
 
-        Task<IPagedList<ContratanteDTO>> ListarContratante(ClaimsPrincipal user, ListarContratanteRequest req);
+        Task<IPagedList<ContratanteDTO>> ListarContratantes(ClaimsPrincipal user, ListarContratanteRequest req);
     }
 }

@@ -18,6 +18,8 @@ namespace XeKaDo.Ioc
             services.AddTransient<ICategoriaEventoService, CategoriaEventoService>();
             services.AddTransient<IContratanteService, ContratanteService>();
             services.AddTransient<IEventoService, EventoService>();
+            services.AddTransient<IAmbienteService, AmbienteService>();
+            services.AddTransient<IConvidadoService, ConvidadoService>();
 
             return services;
         }

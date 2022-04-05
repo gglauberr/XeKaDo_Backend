@@ -49,8 +49,6 @@ namespace XeKaDo.BusinessLogic
                     DataEvento = req.DataEvento,
                     HoraEvento = req.HoraEvento,
                     DataLimiteConfirmacao = req.DataLimiteConfirmacao,
-                    DataCriacao = req.DataCriacao,
-                    Ativo = req.Ativo,
                     ContratanteId = req.ContratanteId,
                     CategoriaEventoId = req.CategoriaEventoId
                 });
@@ -90,6 +88,7 @@ namespace XeKaDo.BusinessLogic
                 evento.DataLimiteConfirmacao = req.DataLimiteConfirmacao;
                 evento.ContratanteId = req.ContratanteId;
                 evento.CategoriaEventoId = req.CategoriaEventoId;
+                evento.Ativo = req.Ativo;
 
                 await context.SaveChangesAsync();
             }

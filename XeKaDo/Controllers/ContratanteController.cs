@@ -77,12 +77,12 @@ namespace XeKaDo.Api.Controllers
 
         [HttpPost]
         [ProducesDefaultResponseType(typeof(ListarContratanteResponse))]
-        public async Task<IActionResult> ListarContratante(ListarContratanteRequest req)
+        public async Task<IActionResult> ListarContratantes(ListarContratanteRequest req)
         {
             var response = new ListarContratanteResponse() { PageInfo = req.PageInfo };
             try
             {
-                var contratantes = await contratanteService.ListarContratante(User, req);
+                var contratantes = await contratanteService.ListarContratantes(User, req);
                 response.Success = true;
                 response.Message = "Contratantes recuperados com sucesso";
                 response.Data = contratantes.ToList();

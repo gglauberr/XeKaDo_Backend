@@ -136,7 +136,7 @@ namespace XeKaDo.BusinessLogic
             }
         }
 
-        public async Task<IPagedList<ContratanteDTO>> ListarContratante(ClaimsPrincipal user, ListarContratanteRequest req)
+        public async Task<IPagedList<ContratanteDTO>> ListarContratantes(ClaimsPrincipal user, ListarContratanteRequest req)
         {
             try
             {
