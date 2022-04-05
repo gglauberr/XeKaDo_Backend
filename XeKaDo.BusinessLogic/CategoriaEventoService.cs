@@ -65,7 +65,7 @@ namespace XeKaDo.BusinessLogic
                 if (existeCategoria) throw new XekadoException("A categoria de evento já está cadastrada");
 
                 var categoria = await context.CategoriaEvento.FindAsync(req.Id);
-                if (categoria is null) throw new XekadoException("categoria não encontrada");
+                if (categoria is null) throw new XekadoException("Categoria não encontrada");
 
                 categoria.Descricao = req.Descricao;
                 categoria.Ativo = req.Ativo;
@@ -87,8 +87,8 @@ namespace XeKaDo.BusinessLogic
                 if (usuarioId == Guid.Empty) throw new XekadoException("Erro no usuário, Tente fazer o login novamente");
                 if (categoriaId == Guid.Empty) throw new XekadoException("Informe o id da categoria");
 
-                var categoria = await context.CategoriaEvento.FindAsync(categoriaId);
-                if (categoria is null) throw new XekadoException("categoria não encontrada");
+                var categoria = await context.CategoriaEvento.Where((c) => c.UsuarioId == usuarioId && c.Id == categoriaId).FirstOrDefaultAsync();
+                if (categoria is null) throw new XekadoException("Categoria não encontrada");
 
                 return new CategoriaEventoDTO()
                 {

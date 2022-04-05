@@ -16,6 +16,8 @@ namespace XeKaDo.Ioc
         {
             services.AddTransient<IAuthenticationService, AuthenticationService>();
             services.AddTransient<ICategoriaEventoService, CategoriaEventoService>();
+            services.AddTransient<IContratanteService, ContratanteService>();
+            services.AddTransient<IEventoService, EventoService>();
 
             return services;
         }
