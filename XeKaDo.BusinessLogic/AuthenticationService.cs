@@ -160,7 +160,7 @@ namespace XeKaDo.BusinessLogic
                 var tokenDescription = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(claims),
-                    Expires = DateTime.Now.Date.AddDays(1),
+                    Expires = DateTime.UtcNow.AddMinutes(1),
                     SigningCredentials = creds
                 };
 
